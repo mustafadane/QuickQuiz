@@ -18,7 +18,7 @@ export const selectScreen = (screen) => ({
 const initialState = {
     selectedScreen: 'login',
     isLoggedIn: false,
-    quizes: [],
+    quizzes: [],
     selectedQuiz: {},
 }
 

@@ -8,7 +8,7 @@ export class BottomNav extends Component {
     constructor () {
         super()
         this.state = {
-            active: 'quizes'
+            active: 'quizzes'
         }
     }
 
@@ -23,8 +23,8 @@ export class BottomNav extends Component {
         <BottomNavigation.Action
             key="quizes"
             icon="list"
-            label="Quizes"
-            onPress={() => this.handleOnPress('quizes')}
+            label="Quizzes"
+            onPress={() => this.handleOnPress('quizzes')}
         />
         <BottomNavigation.Action
             key="progress"
