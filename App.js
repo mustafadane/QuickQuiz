@@ -10,6 +10,7 @@ import Edit from './screens/Edit'
 import Login from './screens/Login'
 import Progress from './screens/Progress'
 import Ask from './screens/Ask'
+import { TakeQuiz } from "./screens/TakeQuiz";
 
 const helperObject = {
   quizzes: Quizzes,
@@ -22,12 +23,16 @@ class App extends React.Component {
 
 
   render() {
+    // const firstUpper = (str) => {
+    //   return str[0].toUpperCase() + str.slice(1)
+    // }
+
     if(this.props.selectedScreen === 'login'){
       return (
         <View style={styles.container}>
         <ScrollView>
           <StatusBar backgroundColor="blue" barStyle="light-content" />
-          <Toolbar />
+          <Toolbar title='Login'/>
           <Text>Selected Screen: {this.props.selectedScreen}</Text>
           <Login />
           </ScrollView>
@@ -40,7 +45,7 @@ class App extends React.Component {
         <View style={styles.container}>
         <ScrollView>
           <StatusBar backgroundColor="blue" barStyle="light-content" />
-          <Toolbar />
+          <Toolbar title='Quizzes' />
           <Text>Selected Screen: {this.props.selectedScreen}</Text>
           <Quizzes />
           </ScrollView>
@@ -53,7 +58,7 @@ class App extends React.Component {
         <View style={styles.container}>
         <ScrollView>
           <StatusBar backgroundColor="blue" barStyle="light-content" />
-          <Toolbar />
+          <Toolbar title='Progress'/>
           <Text>Selected Screen: {this.props.selectedScreen}</Text>
           <Progress />
           </ScrollView>
@@ -66,7 +71,7 @@ class App extends React.Component {
         <View style={styles.container}>
         <ScrollView>
           <StatusBar backgroundColor="blue" barStyle="light-content" />
-          <Toolbar />
+          <Toolbar title='Ask'/>
           <Text>Selected Screen: {this.props.selectedScreen}</Text>
           <Ask />
           </ScrollView>
@@ -79,9 +84,22 @@ class App extends React.Component {
         <View style={styles.container}>
         <ScrollView>
           <StatusBar backgroundColor="blue" barStyle="light-content" />
-          <Toolbar />
+          <Toolbar title='Edit' />
           <Text>Selected Screen: {this.props.selectedScreen}</Text>
           <Edit />
+          </ScrollView>
+          <BottomNavigation style={styles.bottom} />
+      </View>
+      )
+    }
+    if(this.props.selectedScreen === 'takeQuiz'){
+      return (
+        <View style={styles.container}>
+        <ScrollView>
+          <StatusBar backgroundColor="blue" barStyle="light-content" />
+          <Toolbar  title={this.props.selectedQuiz.title} />
+          <Text>Selected Screen: {this.props.selectedScreen}</Text>
+          <TakeQuiz />
           </ScrollView>
           <BottomNavigation style={styles.bottom} />
       </View>
@@ -119,7 +137,8 @@ const styles = StyleSheet.create({
 });
 
 const mapState = state => ({
-  selectedScreen: state.selectedScreen
+  selectedScreen: state.selectedScreen,
+  selectedQuiz: state.selectedQuiz
 })
 
 const mapDispatch = (dispatch) => ({

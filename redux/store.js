@@ -9,6 +9,7 @@ const URL = 'http://quiz-server-1.herokuapp.com/api/'
 const SELECT_SCREEN = 'SELECT_SCREEN'
 const SELECT_QUIZ = 'SELECT_QUIZ'
 const GOT_QUIZZES = 'GOT_QUIZZES'
+const GOT_QUIZ = 'GOT_QUIZ'
 
 //action creators
 export const selectScreen = (screen) => ({
@@ -24,6 +25,10 @@ const gotQuizzes = quizzes => ({
     type: GOT_QUIZZES,
     quizzes
 })
+const gotQuiz = quiz => ({
+    type: GOT_QUIZ,
+    quiz
+})
 
 //thunks
 export const fetchQuizzes = () => {
@@ -32,6 +37,14 @@ export const fetchQuizzes = () => {
     dispatch(gotQuizzes(data))
     }
 }
+
+export const fetchQuiz = (quizId) => {
+    return async (dispatch) => {
+        const { data } = await axios.get(`${URL}quizzes/${quizId}`)
+        dispatch(gotQuiz(data))
+    }
+}
+
 //initial state
 const initialState = {
     selectedScreen: 'login',
@@ -49,7 +62,9 @@ const reducer = (state = initialState, action) => {
         case SELECT_QUIZ:
             return {...state, selectedQuiz: action.quiz}
         case GOT_QUIZZES:
-            return {...state, quizzes:action.quizzes}
+            return {...state, quizzes: action.quizzes}
+        case GOT_QUIZ:
+            return {...state, selectedQuiz: action.quiz}
         default:
             return state
     }
