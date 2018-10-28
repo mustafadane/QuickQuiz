@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, StatusBar, SafeAreaView, ScrollView } from "react-native";
 import Toolbar from "./components/Toolbar";
-import BottomNavigation from './components/BottomNavigation'
+import BottomNav from './components/BottomNavigation'
 import Card from './components/QuestionCard'
 import { connect } from 'react-redux'
 import { selectScreen } from './redux/store'
@@ -10,7 +10,15 @@ import Edit from './screens/Edit'
 import Login from './screens/Login'
 import Progress from './screens/Progress'
 import Ask from './screens/Ask'
-import { TakeQuiz } from "./screens/TakeQuiz";
+import TakeQuiz from "./screens/TakeQuiz";
+import { BottomNavigation } from 'react-native-material-ui'
+import styles from './screens/styles'
+
+import {
+  createStackNavigator,
+} from 'react-navigation';
+
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
 
 const helperObject = {
   quizzes: Quizzes,
@@ -18,8 +26,60 @@ const helperObject = {
   progress: Progress
 }
 
+const RootStack = createStackNavigator({
+    Login,
+    Progress,
+    Quizzes,
+    Ask,
+    Edit,
+    TakeQuiz,
+    // BottomNav,
+    // BottomNavigation
+  },
+  {
+    initialRouteName: 'Login'
+  }
+)
+
+// class Screens extends React.Component {
+//   render() {
+//     return (
+//       // <View>
+//         <RootStack>
+//           {this.props.children}
+//         </RootStack>
+
+//     )
+//   }
+// }
+
+
+export default class App extends React.Component {
+  render() {
+    return (
+      //<View style={styles.container}>
+
+        <RootStack />
+
+        ///<BottomNav style={styles.bottom} />
+        //</RootStack>
+        /* <Text>DENEME</Text> */
+
+      //</View>
+    )
+
+
+
+  }
+}
+
+//OLD FART
+  /*
 
 class App extends React.Component {
+
+
+
 
 
   render() {
@@ -112,29 +172,27 @@ class App extends React.Component {
           <Toolbar />
           <Text>Selected Screen: {this.props.selectedScreen}</Text>
 
-          {/* <Card />
-          <Card />
-          <Card /> */}
         </ScrollView>
         <BottomNavigation style={styles.bottom} />
       </View>
     );
   }
 }
+ */
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "space-between"
-  },
-  toolbar: {
-    width: 375,
-    height: 100,
-    borderBottomWidth: 5
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     // backgroundColor: "#fff",
+//     // alignItems: "center",
+//     // justifyContent: "space-between"
+//   },
+//   toolbar: {
+//     width: 375,
+//     height: 100,
+//     borderBottomWidth: 5
+//   }
+// });
 
 const mapState = state => ({
   selectedScreen: state.selectedScreen,
@@ -145,4 +203,4 @@ const mapDispatch = (dispatch) => ({
   selectScreen: (screen) => dispatch(selectScreen(screen))
 })
 
-export default connect(mapState, mapDispatch)(App)
+// export default connect(mapState, mapDispatch)(App)
