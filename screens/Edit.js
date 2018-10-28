@@ -6,12 +6,12 @@ import styles from './styles'
 export class Edit extends Component {
     render() {
         return (
-            <View style={styles.container}>
+
             <ScrollView>
                 <Text>this is edit</Text>
             </ScrollView>
-                {/* <BottomNav style={styles.bottom} navigation={this.props.navigation} active='edit'/> */}
-            </View>
+
+
         )
     }
 }

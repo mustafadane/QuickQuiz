@@ -6,11 +6,11 @@ import styles from './styles'
 export class Progress extends Component {
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <ScrollView>
                 <Text>this is progress</Text>
                 </ScrollView>
-                <BottomNav style={styles.bottom} navigation={this.props.navigation} active='progress'/>
+
             </View>
         )
     }

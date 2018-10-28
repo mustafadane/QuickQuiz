@@ -19,6 +19,7 @@
     "react-navigation": "^2.18.2",
     "react-navigation-material-bottom-tabs": "^0.4.0",
     "react-redux": "^5.1.0",
+    "react-router-native": "^4.3.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sequelize": "^4.41.0"

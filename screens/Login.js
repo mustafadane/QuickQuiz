@@ -8,24 +8,14 @@ export class Login extends Component {
       };
 
     render() {
-        const {navigate} = this.props.navigation
-        return(
+        // const {navigate} = this.props.navigation
+
+        return (
             <View>
-        <Button
-            title="Go to Jane's profile"
-            onPress={() =>
-            navigate('Quizzes')
-            }
-        />
-        {/* <BottomNav navigation={this.props.navigation} /> */}
-        </View>
+                <Text>this is login</Text>
+
+            </View>
         )
-        // return (
-        //     <View>
-        //         <Text>this is login</Text>
-        //         <BottomNavigation />
-        //     </View>
-        // )
     }
 }
 

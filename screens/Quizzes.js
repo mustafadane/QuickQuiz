@@ -18,10 +18,10 @@ export class Quizzes extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <ScrollView>
+
+            <View>
                 <Text>this is quizes</Text>
-                {this.props.quizzes.length
+                    {this.props.quizzes.length
                     ? this.props.quizzes
                     .filter(quiz => quiz.isActive)
                     .map(quiz =>
@@ -37,9 +37,8 @@ export class Quizzes extends Component {
                         )
                     : <Text>No Quizzes Yet!</Text>
                 }
-                </ScrollView>
-                {/* <BottomNav style={styles.bottom} navigation={this.props.navigation} active='quizzes'/> */}
-            </View>
+                </View>
+
         )
     }
 }

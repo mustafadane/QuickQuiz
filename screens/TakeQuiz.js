@@ -8,7 +8,7 @@ export class TakeQuiz extends Component {
     render() {
         console.log(this.props.selectedQuiz)
         return (
-            <View style={styles.container}>
+            <View >
                 {/* {this.props.selectedQuiz.questions.map(question => (
                     <Text key={question.id}>{question.title}</Text>
                 )) } */}

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { Constants } from 'expo';
 
 const styles = StyleSheet.create({
     container: {
@@ -11,6 +12,11 @@ const styles = StyleSheet.create({
       width: 375,
       height: 100,
       borderBottomWidth: 5
+    },
+    statusBar: {
+      // backgroundColor: "#C2185B",
+      // height: Constants.statusBarHeight,
+      paddingTop: Constants.statusBarHeight
     }
   });
 
