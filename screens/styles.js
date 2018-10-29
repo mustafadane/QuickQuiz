@@ -4,9 +4,9 @@ import { Constants } from 'expo';
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      // backgroundColor: "#fff",
+      backgroundColor: "#fff",
       // alignItems: "center",
-      // justifyContent: "space-between"
+      justifyContent: "space-between"
     },
     toolbar: {
       width: 375,
@@ -14,9 +14,9 @@ const styles = StyleSheet.create({
       borderBottomWidth: 5
     },
     statusBar: {
-      // backgroundColor: "#C2185B",
-      // height: Constants.statusBarHeight,
-      paddingTop: Constants.statusBarHeight
+      paddingTop: Constants.statusBarHeight,
+      flex: 1,
+      justifyContent: 'space-between'
     }
   });
 

@@ -10,37 +10,48 @@ import Progress from './screens/Progress'
 import Ask from './screens/Ask'
 import TakeQuiz from "./screens/TakeQuiz";
 import styles from './screens/styles'
-import { Route } from "react-router-native"
+import { Route, Switch, withRouter } from "react-router-native"
 
 
-export default class App extends React.Component {
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state={
+      key:0
+    }
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.location.pathname !== this.props.location.pathname){
+      this.setState({
+        key: Math.random()
+      })
+    }
+  }
+
   render() {
+    // console.log('props:', this.props)
     return (
 
-      <View>
+      <View style={styles.container}>
+        <View style={styles.statusBar}>
 
-
-      <View style={styles.statusBar}>
-
-            <View style={styles.container}>
-            <StatusBar backgroundColor="blue" barStyle="light-content" />
             <ToolBar title='title here' />
             <ScrollView>
-              <Route exact path='/' component={Login} />
-              <Route path='/quizzes' component={Quizzes} />
-              <Route path='/progress' component={Progress} />
-              <Route path='/ask' component={Ask} />
-              <Route path='/edit' component={Edit} />
-              <Route path='/takequiz' component={TakeQuiz} />
+              <Switch>
+                <Route exact path='/' component={Login} />
+                <Route exact path='/quizzes' component={Quizzes} />
+                <Route path='/progress' component={Progress} />
+                <Route path='/ask' component={Ask} />
+                <Route path='/edit' component={Edit} />
+                <Route path='/takequiz' component={TakeQuiz} />
+              </Switch>
             </ScrollView>
-            <View style={styles.bottom} >
-              <BottomNav />
-            </View>
-
+            <BottomNav />
         </View>
-      </View>
       </View>
     )
   }
 }
 
+export default withRouter(App)
